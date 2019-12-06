@@ -11,6 +11,7 @@ import {
 import {
     ButtonComponentType,
     GalleryComponentType,
+    GalleryImagesTypes,
     InputComponentType,
 } from '../interfaces';
 import ButtonComponent from './ButtonComponent.js';
@@ -20,7 +21,7 @@ import ImageComponent from './ImageComponent.js';
 import InputComponent from './InputComponent.js';
 
 export default class GalleryComponent extends BaseComponent implements GalleryComponentType{
-    images: object;
+    images: GalleryImagesTypes;
     component: HTMLElement;
     galleryPanel: HTMLElement;
     galleryContainer: HTMLElement;
@@ -111,8 +112,8 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
     };
 
     generateImages = () => {
-        for (let i = 0; i < (this.input.component.value || 5); i++) {
-            let id = random(1, 1000);
+        for (let i = 0; i < ((<HTMLInputElement>this.input.component).value || 5); i++) {
+            let id = random(1, 1000).toString();
             let imageData = {
                 id,
                 src: `${PICSUM_URL}id/${ id }/200/200`,
@@ -133,13 +134,13 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
         this.fillGallery();
     };
 
-    removeImageById = (imageId) => {
+    removeImageById = (imageId: string) => {
         const confirmation = confirm('Do you want to remove this image?');
         if (confirmation) {
             apiRemoveImageById(imageId)
                 .then(() => {
                     delete this.images[imageId];
-                    this.galleryContainer.removeChild(document.getElementById(imageId));
+                    this.galleryContainer.removeChild(<Node>document.getElementById(imageId));
                 });
         }
     };

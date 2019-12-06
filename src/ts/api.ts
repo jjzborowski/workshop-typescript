@@ -22,7 +22,7 @@ export const apiSetImage = async (imageData: ImageType) => {
     }
 };
 
-export const apiRemoveImageById = async (imageId: number) => {
+export const apiRemoveImageById = async (imageId: string) => {
     try {
         const response = await fetch(`${ FIREBASE_URL }images/${ imageId }.json`, {
             method: 'DELETE',

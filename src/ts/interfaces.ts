@@ -1,9 +1,13 @@
 import BaseComponent from './components/BaseComponent';
 
 export interface BaseComponentType {
-    id: number,
+    id: string,
     target: HTMLElement,
-    component: HTMLElement | undefined,
+    component: HTMLElement,
+}
+
+export interface GalleryImagesTypes {
+    [key: string]: ImageComponentType,
 }
 
 export interface GalleryComponentType extends BaseComponent {
@@ -12,7 +16,7 @@ export interface GalleryComponentType extends BaseComponent {
     input: InputComponentType,
     generateButton: ButtonComponentType,
     clearButton: ButtonComponentType,
-    images: object,
+    images: GalleryImagesTypes,
 }
 
 export interface GalleryCellComponentType extends BaseComponent {
@@ -32,6 +36,6 @@ export interface ButtonComponentType extends BaseComponent {
 }
 
 export interface ImageType {
-    id: number,
+    id: string,
     src: string,
 }

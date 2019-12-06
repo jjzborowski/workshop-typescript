@@ -1,13 +1,12 @@
 import { BaseComponentType } from '../interfaces';
 
 export default class BaseComponent implements BaseComponentType {
-    id: number;
+    id: string;
     target: HTMLElement;
-    component: HTMLElement | undefined;
+    component!: HTMLElement;
 
     constructor(props: any) {
         this.id = props.id;
         this.target = props.target;
-        this.component = undefined;
     }
 }
