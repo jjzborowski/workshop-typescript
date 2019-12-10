@@ -46,7 +46,6 @@ export default class GalleryComponent extends BaseComponent {
             apiGetImages()
                 .then(response => {
                 if (response) {
-                    console.log(response);
                     for (let [id, image] of Object.entries(response)) {
                         if (!this.images[id]) {
                             this.images[id] = new ImageComponent({

@@ -1,7 +1,7 @@
 import { GalleryCellComponentType } from '../interfaces';
 import BaseComponent from './BaseComponent.js';
 
-export default class GalleryCellComponent extends BaseComponent implements GalleryCellComponentType{
+export default class GalleryCellComponent extends BaseComponent implements GalleryCellComponentType {
     imageElement: HTMLElement;
     imageTitleElement: HTMLElement;
     removeButton: HTMLElement;

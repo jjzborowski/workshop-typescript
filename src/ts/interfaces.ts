@@ -4,6 +4,7 @@ export interface BaseComponentType {
     id: string,
     target: HTMLElement,
     component: HTMLElement,
+    initTemplate(props: any): void,
 }
 
 export interface GalleryImagesTypes {
@@ -17,6 +18,11 @@ export interface GalleryComponentType extends BaseComponent {
     generateButton: ButtonComponentType,
     clearButton: ButtonComponentType,
     images: GalleryImagesTypes,
+    getImages(): void,
+    fillGallery(): void,
+    generateImages(): void,
+    removeImageById(imageId: string): void,
+    removeImages(): void,
 }
 
 export interface GalleryCellComponentType extends BaseComponent {

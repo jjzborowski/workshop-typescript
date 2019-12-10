@@ -20,7 +20,7 @@ import GalleryCellComponent from './GalleryCellComponent.js';
 import ImageComponent from './ImageComponent.js';
 import InputComponent from './InputComponent.js';
 
-export default class GalleryComponent extends BaseComponent implements GalleryComponentType{
+export default class GalleryComponent extends BaseComponent implements GalleryComponentType {
     images: GalleryImagesTypes;
     component: HTMLElement;
     galleryPanel: HTMLElement;
@@ -37,7 +37,7 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
         this.getImages();
     }
 
-    initTemplate = () => {
+    initTemplate = (): void => {
         this.component = document.createElement('div');
         this.component.classList.add('gallery');
 
@@ -78,11 +78,10 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
         this.target.appendChild(this.component);
     };
 
-    getImages = () => {
+    getImages = (): void => {
         apiGetImages()
             .then(response => {
                 if (response) {
-                    console.log(response);
                     for (let [id, image] of Object.entries(response)) {
                         if (!this.images[id]) {
                             this.images[id] = new ImageComponent({
@@ -97,7 +96,7 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
             });
     };
 
-    fillGallery = () => {
+    fillGallery = (): void => {
         Object.values(this.images)
             .forEach(imageComponent => {
                 if (!document.getElementById(imageComponent.id)) {
@@ -111,7 +110,7 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
             });
     };
 
-    generateImages = () => {
+    generateImages = (): void => {
         for (let i = 0; i < ((<HTMLInputElement>this.input.component).value || 5); i++) {
             let id = random(1, 1000).toString();
             let imageData = {
@@ -134,7 +133,7 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
         this.fillGallery();
     };
 
-    removeImageById = (imageId: string) => {
+    removeImageById = (imageId: string): void => {
         const confirmation = confirm('Do you want to remove this image?');
         if (confirmation) {
             apiRemoveImageById(imageId)
@@ -145,7 +144,7 @@ export default class GalleryComponent extends BaseComponent implements GalleryCo
         }
     };
 
-    removeImages = () => {
+    removeImages = (): void => {
         const confirmation = confirm('Do you want to remove all images?');
         if (confirmation) {
             apiRemoveImages()
