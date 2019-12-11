@@ -27,14 +27,14 @@
     flex-wrap: wrap;
     border: 1px solid black;
     margin-top: 65px;
-    max-width: 1040px;
-    padding: 5px 0 0 5px;
+    max-width: 1062px;
+    padding: 5px;
 }
 
 .gallery__panel button {
     padding: 10px 14px;
-    background-color: darkblue;
-    color: white;
+    background-color: white;
+    color: black;
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 10px;
@@ -42,25 +42,14 @@
     cursor: pointer;
 }
 
-.gallery__panel button:hover {
-    background-color: blue;
-}
-
 .gallery__panel input {
     padding: 0 8px;
-}
-
-.gallery .gallery__row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 .gallery .gallery__cell {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin: 5px;
 }
 
 .gallery .gallery__image {
